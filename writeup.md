@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./image/valid_trajectories.jpg "Valid Trajectories"
+[image1]: ./image/Valid_Trajectories.jpg "Valid Trajectories"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/1020/view) individually and describe how I addressed each point in my implementation.  
