@@ -31,7 +31,7 @@ My code compiles without errors with `cmake` and `make`.
 ![alt text][image1]
 
 #### 1. The car is able to drive at least 4.32 miles without incident.
-The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail.
+The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail. I also uploaded [the simulation video](https://www.youtube.com/watch?v=v-pf2Y82rWs&t=17s).
 
 #### 2. The car drives according to the speed limit.
 The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic. Whenever checking the next state using the FSM, the ego vehicle checks the speed limit and also tries to speed up as possible.
