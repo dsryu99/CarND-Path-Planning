@@ -398,7 +398,8 @@ vector<float> Vehicle::get_kinematics(map<int, vector<Vehicle>> predictions, int
     for a given lane. Tries to choose the maximum velocity and acceleration,
     given other vehicle positions and accel/velocity constraints.
     */
-    float max_velocity_accel_limit = this->max_acceleration + this->v_new;
+    float max_velocity_accel_limit = this->v_new + this->max_acceleration;
+    float max_velocity_deaccel_limit = this->v_new - this->max_acceleration;
     float new_position;
     float new_velocity;
     float new_accel;
@@ -411,7 +412,11 @@ vector<float> Vehicle::get_kinematics(map<int, vector<Vehicle>> predictions, int
             new_velocity = min(min(vehicle_ahead.v_new, max_velocity_accel_limit), this->target_speed);
         }
         else {
-            float max_velocity_in_front = (vehicle_ahead.s_new - this->car_s - this->preferred_buffer) + vehicle_ahead.v_new - 0.5 * (this->a_new);
+            float v_distance = vehicle_ahead.s_new - this->car_s;
+            float max_velocity_in_front = (v_distance - this->preferred_buffer) + vehicle_ahead.v_new - 0.5 * (this->a_new);
+            if (v_distance > this->preferred_buffer / 3.0) {
+                max_velocity_in_front = max(max_velocity_in_front, max_velocity_deaccel_limit);
+            }
             new_velocity = min(min(max_velocity_in_front, max_velocity_accel_limit), this->target_speed);
         }
     }
